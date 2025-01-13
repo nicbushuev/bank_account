@@ -1,0 +1,9 @@
+[tool.flake8]
+max-line-length = 119
+exclude = '''
+/(
+    \.git
+  | __pycache__
+
+)/
+'''
