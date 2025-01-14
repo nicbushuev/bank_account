@@ -1,6 +1,6 @@
 import re
 
-from src.masks import get_mask_card_number, get_mask_account
+from masks import get_mask_card_number, get_mask_account
 
 
 def mask_account_card(input_bank_information: str) ->str:
@@ -19,3 +19,6 @@ def mask_account_card(input_bank_information: str) ->str:
 		masked_number = get_mask_account(number)
 	else:
 		raise ValueError('Неверный формат ввода. Строка должна начинаться с названия платежной системы или слова счет')
+
+	'''Вывод результата с замаскированным номером'''
+	return input_bank_information.replace(number,masked_number)
