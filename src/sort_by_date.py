@@ -2,7 +2,7 @@ from src.widget import get_date
 from datetime import datetime
 
 
-def sort_by_date(data: list, decrease: bool= True) -> list:
+def sort_by_date(data: list, decrease: bool= False) -> list:
 	'''
 	Функиця, создающая новый список словарей с читаемым форматом дат
 	:param data: Список словарей с ключем "data"
@@ -14,7 +14,7 @@ def sort_by_date(data: list, decrease: bool= True) -> list:
 	for item in data:
 		#Копируем словарь, чтобы не менять старый
 		new_item = item.copy()
-		# Прербразуем дату в читаемый формат
+		# Преобразуем дату в читаемый формат
 		new_item['date'] = get_date(item['date'])
 		new_data.append(new_item)
 
