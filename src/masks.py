@@ -5,7 +5,7 @@ def get_mask_card_number(card_number: str) -> str:
 
     # Проверка условия отсутствия пробелов при вводе
     if " " in card_number:
-        raise ValueError("Номер карты не должен содержать пробелов")
+        raise ValueError("В номере карты не должно быть пробелов")
 
     # Проверка количества символов карты и наличия только цифр
     if len(card_number) != 16 or not card_number.isdigit():
