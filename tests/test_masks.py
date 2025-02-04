@@ -1,31 +1,38 @@
-from src.masks import get_mask_card_number
+from src.masks import get_mask_card_number, get_mask_account
 import pytest
 
 
-def test_get_mask_card_number():
-	#Проверка на правильное отображение маски по заданному формату
-	assert get_mask_card_number('1111222233334444') == '1111 22** **** 4444'
-	assert get_mask_card_number('1234123412341234') == '1234 12** **** 1234'
+def test_get_mask_card_number(default_number):
+	"""Проверка на правильное отображение маски карты по заданному формату"""
+	assert get_mask_card_number(default_number) == '1111 22** **** 4444'
 
 
-def test_get_mask_card_number_with_spaces():
-	#Проверка на наличие пробелов в номере карты
-	card_number = '1234 1234 1234 1234'
+
+def test_get_mask_card_number_with_spaces(default_number_with_spaces):
+	"""Проверка на наличие пробелов в номере карты"""
 	with pytest.raises(ValueError, match='В номере карты не должно быть пробелов'):
-		get_mask_card_number(card_number)
+		get_mask_card_number(default_number_with_spaces)
 
 
-def test_get_mask_card_number_len_digit():
-	#Проверка количества символов карты и наличия только цифр
-	card_number = '1234as1234as1234as1234'
+def test_get_mask_card_number_len_digit(default_number_with_letters):
+	"""Проверка количества символов карты и наличия только цифр"""
 	with pytest.raises(ValueError, match='Номер карты должен состоять из 16 цифр'):
-		get_mask_card_number(card_number)
+		get_mask_card_number(default_number_with_letters)
 
 
+def test_get_mask_account_number(default_number):
+	"""Проверка на правильное отображение маски счета по заданному формату"""
+	assert get_mask_account(default_number) == '**4444'
 
 
+def test_get_mask_account_number_with_spaces(default_number_with_spaces):
+	"""Проверка наличие пробелов в номере аккаунта"""
+
+	with pytest.raises(ValueError, match='Номер аккаунта не должен содержать пробелов'):
+		get_mask_account(default_number_with_spaces)
 
 
-
-
-
+def test_get_mask_account_number_with_letters(default_number_with_letters):
+	"""Проверка наличия букв в номере аккаунта"""
+	with pytest.raises(ValueError, match='Номер аккаунта должен содержать только цифры'):
+		get_mask_account(default_number_with_letters)
