@@ -12,7 +12,7 @@ from src.widget import mask_account_card, get_date
 ])
 
 
-def test_mask_account_card_if_card(input_string,expected):
+def test_mask_account_card_if_card(input_string: str,expected: str):
 	"""Проверка входной информации о карте"""
 	assert mask_account_card(input_string) == expected
 
@@ -23,7 +23,7 @@ def test_mask_account_card_if_card(input_string,expected):
 ])
 
 
-def test_mask_account_if_account(input_string, expected):
+def test_mask_account_if_account(input_string: str, expected: str):
 	"""Проверка входной информации о счете"""
 	assert mask_account_card(input_string) == expected
 
@@ -37,7 +37,7 @@ def test_mask_account_if_account(input_string, expected):
 ])
 
 
-def test_mask_account_card_valid(input_string, expected):
+def test_mask_account_card_valid(input_string: str, expected: str):
 	"""Проверка правильного определения типа карты или счета"""
 	assert mask_account_card(input_string) == expected
 
@@ -52,7 +52,7 @@ def test_mask_account_card_valid(input_string, expected):
 
 ])
 
-def test_account_card_error(input_string, message_error):
+def test_account_card_error(input_string: str, message_error: str):
 	"""Отработка негативных тестов"""
 	with pytest.raises(ValueError):
 		mask_account_card(input_string)
@@ -65,7 +65,7 @@ def test_account_card_error(input_string, message_error):
 	("2024-03-11T02:26:18.671407", '11.03.2024')
 ])
 
-def test_get_date_positive(input_date, expected):
+def test_get_date_positive(input_date: str, expected: str):
 	"""Проверка дат на верное форматирование под заданный стандарт"""
 	assert get_date(input_date) == expected
 
