@@ -13,6 +13,7 @@ git clone https://github.com/nicbushuev/bank_account.git
 2. Установите зависимости:
 ```
 pip install poetry
+poetry install pytest
 
 ```
 ## Использование:
@@ -21,7 +22,15 @@ processing.py: Функция, которая фильтрует
     
 sort_by_date.py: Функция, создающая новый список словарей с читаемым форматом дат
 
-masks.py, widget.py: Функции по маскированию карты/счета 
+masks.py, widget.py: Функции по маскированию карты/счета
+
+test_masks: Тесты для модуля masks.py
+
+test_processing.py: Тесты для модуля processing.py
+
+test_widget.py: Тесты для модуля widget.py
+
+conftest.py Модуль с фикстурами для функций
 
 
 ## Лицензия:
