@@ -16,3 +16,5 @@ def default_number_with_spaces():
 def default_number_with_letters():
 	"""Фикстура из цифр и букв без пробелов (16 цифр)"""
 	return '1234as1234as1234as1234'
+
+
