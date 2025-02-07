@@ -1,27 +1,38 @@
-import re
+
 from datetime import datetime
 
-from masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(input_bank_information: str) -> str:
     """Функция маскирует строковую входящую информацию о карте или счете"""
 
-    try_match = re.search(r"(\d+)$", input_bank_information)
-    if not try_match:
-        raise ValueError("Формат неверный! Введите формат Карта/счет номер")
+    cleaned_input = input_bank_information.strip()
+    parts = cleaned_input.split()
 
-    number = try_match.group(1)
+    if len(parts) < 2:
+        raise ValueError("Формат неверный, введите формат карта/счет номер")
 
-    if input_bank_information.lower().startswith(("visa", "mastercard", "mir", "maestro")):
+    card_type = parts[0].casefold()
+    number = "".join(parts[1:]).replace(" ", "")
+
+    if not number.isdigit():
+        raise ValueError("Формат неверный! В номере карты/счета должны быть только цифры")
+
+    if card_type in ("visa", "mastercard", "mir", "maestro"):
+        if len(number) != 16:
+            raise ValueError("Номер карты должен состоять из 16 цифр")
         masked_number = get_mask_card_number(number)
-    elif input_bank_information.lower().startswith("счет"):
+    elif len(number) == 0:
+        raise ValueError("Номер не может быть пустым")
+    elif card_type == "счет":
+        if len(number) < 6:
+            raise ValueError("Номер счёта слишком короткий")
         masked_number = get_mask_account(number)
     else:
         raise ValueError("Неверный формат ввода.")
 
-    return input_bank_information.replace(number, masked_number)
-
+    return f"{parts[0]} {masked_number}"
 
 def get_date(date_string: str) -> str:
     """Преобразует дату в новый формат"""
