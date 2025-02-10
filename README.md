@@ -24,13 +24,18 @@ sort_by_date.py: Функция, создающая новый список сл
 
 masks.py, widget.py: Функции по маскированию карты/счета
 
+
+## Тестирование:
+
+В тестировании используется Pytest
+
 test_masks: Тесты для модуля masks.py
 
 test_processing.py: Тесты для модуля processing.py
 
 test_widget.py: Тесты для модуля widget.py
 
-conftest.py Модуль с фикстурами для функций
+conftest.py Модуль с фикстурами для функций тестирования
 
 
 ## Лицензия:
