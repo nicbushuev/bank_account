@@ -10,3 +10,6 @@ def filter_by_currency(transactions: list, str_currency: str):
 
 
 
+
+
+
