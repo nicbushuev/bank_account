@@ -24,7 +24,14 @@ sort_by_date.py: Функция, создающая новый список сл
 
 masks.py, widget.py: Функции по маскированию карты/счета
 
+generators.py: 
 
+Функции:
+filter_by_currency - Функция, фильтрующая транзакции по заданной валюте
+
+transaction_descriptions - Функция, поочередно выдающая описание каждой транзакции
+
+card_number_generator - Функция, генерирующая номера карт в заданном диапазоне
 ## Тестирование:
 
 В тестировании используется Pytest
@@ -36,6 +43,8 @@ test_processing.py: Тесты для модуля processing.py
 test_widget.py: Тесты для модуля widget.py
 
 conftest.py Модуль с фикстурами для функций тестирования
+
+test_generators.py - Тесты для generators.py
 
 
 
